@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#071b1a">
+<meta name="description" content="BIOCHAIN Biomimicry Weekly Report — Five Designs. One Lesson from Nature.">
+<title>BIOCHAIN | Biomimicry Weekly Report — Week 02</title>
+<style>
+:root{
+  --bg:#071426;--panel:#10233d;--panel2:#173253;--text:#f2f7ff;--muted:#a9bdd6;
+  --green:#72c7ff;--mint:#8aaeff;--line:rgba(190,218,255,.18);--gold:#b7d7ff;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:
+ radial-gradient(ellipse at 15% 0%,rgba(44,115,190,.24),transparent 38%),
+ radial-gradient(ellipse at 100% 30%,rgba(39,92,165,.20),transparent 35%),var(--bg);
+ color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.6; background-image:linear-gradient(rgba(126,177,235,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(126,177,235,.025) 1px,transparent 1px);background-size:36px 36px}
+a{color:inherit}
+.wrap{width:min(1120px,92%);margin:auto}
+header{padding:28px 0;display:flex;justify-content:space-between;align-items:center;gap:20px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:850;letter-spacing:.16em}
+.brand-mark{width:40px;height:40px;border:1px solid #b6f36b;border-radius:14px;display:grid;place-items:center;color:var(--green);font-size:22px;background:#132d25}
+.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.13em;font-weight:600}
+.pill{border:1px solid var(--line);border-radius:99px;padding:7px 12px;color:var(--muted);font-size:12px}
+.hero{padding:64px 0 48px;display:grid;grid-template-columns:1.35fr .65fr;gap:34px;align-items:center}
+.eyebrow{color:var(--green);font-weight:800;letter-spacing:.16em;font-size:12px;text-transform:uppercase}
+h1{font-size:clamp(42px,6vw,76px);line-height:.99;letter-spacing:-.055em;margin:18px 0 20px;max-width:780px}
+h1 span{color:var(--green)}
+.lead{font-size:18px;color:var(--muted);max-width:650px}
+.hero-art{min-height:300px;position:relative;display:grid;place-items:center;background:linear-gradient(135deg,transparent 49.7%,rgba(114,199,255,.12) 50%,transparent 50.3%);}
+.orbit{width:min(300px,70vw);aspect-ratio:1;border:1px solid rgba(114,199,255,.48);border-radius:2px;display:grid;place-items:center;position:relative;box-shadow:0 0 90px rgba(118,224,192,.08) inset}
+.orbit:before,.orbit:after{content:"";position:absolute;border:1px dashed rgba(138,174,255,.38);border-radius:2px;inset:13%}
+.orbit:after{inset:28%;border-style:solid}
+.orbit-core{font-size:76px;filter:drop-shadow(0 0 22px rgba(182,243,107,.25))}
+.orbit-label{position:absolute;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 11px;font-size:12px;color:var(--muted)}
+.l1{top:5%;left:4%}.l2{right:-3%;top:32%}.l3{bottom:9%;left:2%}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin:36px 0 18px}
+h2{font-size:clamp(25px,3vw,36px);letter-spacing:-.03em;margin:0}
+.section-head p{color:var(--muted);margin:0;max-width:440px;font-size:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.topic{border:1px solid var(--line);border-radius:8px;background:linear-gradient(145deg,rgba(23,50,83,.96),rgba(10,27,49,.98));overflow:hidden;transition:transform .2s,border-color .2s}
+.topic:hover{transform:translateY(-3px);border-color:rgba(114,199,255,.65)}
+.topic-top{padding:22px 22px 16px;display:flex;gap:16px;align-items:flex-start}
+.emoji{width:54px;height:54px;flex:0 0 54px;border-radius:6px;background:#1a3657;display:grid;place-items:center;font-size:28px}
+.topic h3{margin:0 0 4px;font-size:20px;line-height:1.25}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.13em;color:var(--mint);font-weight:800}
+.topic p{margin:0;color:var(--muted);font-size:14px}
+.topic-body{padding:0 22px 20px 92px}
+.topic-body p{margin-bottom:16px}
+.actions{display:flex;flex-wrap:wrap;gap:9px}
+.btn{border:1px solid var(--line);border-radius:12px;padding:10px 13px;text-decoration:none;font-weight:750;font-size:13px;display:inline-flex;gap:8px;align-items:center;justify-content:center;cursor:pointer;transition:background .2s}
+.btn.primary{background:var(--green);color:#102015;border-color:var(--green)}
+.btn.secondary{color:var(--text);background:rgba(255,255,255,.025)}
+.btn:hover{filter:brightness(1.08)}
+.btn.disabled{color:#9daea8;border-style:dashed;cursor:default}
+.extra{display:none;border-top:1px solid var(--line);padding:16px 22px 20px;background:rgba(0,0,0,.12);color:var(--muted);font-size:14px}
+.topic.open .extra{display:block}
+.toggle{background:none;color:var(--mint);border:0;padding:0;font:inherit;font-size:13px;font-weight:800;cursor:pointer;margin-top:13px}
+.pathway{margin:58px 0 28px;padding:28px;border:1px solid var(--line);border-radius:8px;background:linear-gradient(110deg,rgba(114,199,255,.10),rgba(138,174,255,.05))}
+.pathway h2{margin-bottom:20px}
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}
+.step{padding:16px 12px;border-radius:5px;background:rgba(255,255,255,.04);text-align:center;font-weight:800}
+.step span{display:block;color:var(--green);font-size:11px;letter-spacing:.12em;margin-bottom:5px}
+.reflection{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;padding:30px 0 62px}
+.reflection h2{margin-bottom:10px}
+.reflection p{color:var(--muted)}
+.question{padding:24px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.question label{display:block;margin-bottom:10px;font-weight:750}
+textarea{width:100%;min-height:100px;background:#09182b;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:12px;font:inherit;resize:vertical}
+.question .btn{margin-top:12px}
+footer{border-top:1px solid var(--line);padding:24px 0 34px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:12px}
+footer strong{color:var(--text);letter-spacing:.12em}
+.note{font-size:12px;color:var(--muted);margin-top:12px}
+@media(max-width:760px){header{align-items:flex-start}.hero{grid-template-columns:1fr;padding-top:35px}.hero-art{min-height:250px}.grid{grid-template-columns:1fr}.topic-body{padding-left:22px}.steps{grid-template-columns:repeat(2,1fr)}.reflection{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.pill{display:none}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="brand"><div class="brand-mark">✳</div><div>BIOCHAIN<small>ZARABI BIOINNOVATION ECOSYSTEM</small></div></div>
+  <div class="pill">WEEK 02 · 12–16 OCT 2026</div>
+</header>
+<main>
+<section class="hero">
+  <div>
+    <div class="eyebrow">Biomimicry Weekly Report · BMS-WR-02-2026</div>
+    <h1>Five Designs.<br><span>One Lesson</span> from Nature.</h1>
+    <p class="lead">From buildings and everyday products to composites, textiles and surfaces, explore five ways biological strategies can inform design—and why performance testing matters.</p>
+    <a class="btn primary" href="#topics">Explore this week <span>↓</span></a>
+  </div>
+  <div class="hero-art" aria-label="Abstract biomimicry network illustration">
+    <div class="orbit"><div class="orbit-core">🌿</div><div class="orbit-label l1">BIOLOGY</div><div class="orbit-label l2">DESIGN</div><div class="orbit-label l3">TECHNOLOGY</div></div>
+  </div>
+</section>
+
+<section id="topics">
+  <div class="section-head">
+    <h2>Explore this week’s posts</h2>
+    <p>Select a design topic to expand its summary, then open the original LinkedIn post. This report covers 12–16 October 2026.</p>
+  </div>
+  <div class="grid">
+    <article class="topic">
+      <div class="topic-top"><div class="emoji">🏛️</div><div><div class="kicker">MONDAY · ARCHITECTURE · BMS-11</div><h3>Termite Mounds</h3><p>Interconnected chambers inspire questions about airflow in high-rise buildings.</p></div></div>
+      <div class="topic-body"><p>The lesson is to organize space for function, then test ventilation performance rather than assuming that a nature-inspired form will work.</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7515132729500327936">Open original post ↗</a></div><button class="toggle" aria-expanded="false">＋ Read topic summary</button></div>
+      <div class="extra">Design prompt: what airflow, temperature or energy-use measure would you collect to compare a biomimetic ventilation concept with a conventional design?</div>
+    </article>
+    <article class="topic">
+      <div class="topic-top"><div class="emoji">💡</div><div><div class="kicker">TUESDAY · PRODUCT DESIGN · BMS-12</div><h3>Beyond Appearance</h3><p>Use form, structure, materials, function and sustainability as distinct design lenses.</p></div></div>
+      <div class="topic-body"><p>A product does not become bioinspired just because it looks natural. The design should adapt a biological strategy to a defined need and be evaluated against that need.</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7515882315676545024">Open original post ↗</a></div><button class="toggle" aria-expanded="false">＋ Read topic summary</button></div>
+      <div class="extra">Design prompt: which product feature are you trying to improve—weight, durability, resource use, repairability or user experience—and how would you measure it?</div>
+    </article>
+    <article class="topic">
+      <div class="topic-top"><div class="emoji">🦴</div><div><div class="kicker">WEDNESDAY · STRUCTURAL DESIGN · BMS-13</div><h3>Bone Osteons</h3><p>Hierarchical organization inspires composite architectures and crack-control strategies.</p></div></div>
+      <div class="topic-body"><p>Bone’s multiscale organization offers a way to think about how material architecture can influence crack propagation and mechanical performance.</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7516156906462273536">Open original post ↗</a></div><button class="toggle" aria-expanded="false">＋ Read topic summary</button></div>
+      <div class="extra">Design prompt: what would you measure first in a bioinspired composite—crack growth, toughness, strength, fatigue behaviour or mass?</div>
+    </article>
+    <article class="topic">
+      <div class="topic-top"><div class="emoji">🧵</div><div><div class="kicker">THURSDAY · TEXTILE DESIGN · BMS-14</div><h3>Animal Hide</h3><p>Porous, multiscale fibres inspire thermal-insulating textiles and possible heat storage.</p></div></div>
+      <div class="topic-body"><p>Combining fibrous structures with phase-change materials may add heat-storage functions, but the full textile must be tested under realistic conditions.</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7516447333975437313">Open original post ↗</a></div><button class="toggle" aria-expanded="false">＋ Read topic summary</button></div>
+      <div class="extra">Design prompt: how would you test insulation, breathability, durability and thermal storage across repeated heating-and-cooling cycles?</div>
+    </article>
+    <article class="topic">
+      <div class="topic-top"><div class="emoji">🍃</div><div><div class="kicker">FRIDAY · INDUSTRIAL DESIGN · BMS-15</div><h3>Lotus Leaf</h3><p>Self-cleaning surfaces depend on more than water repellency alone.</p></div></div>
+      <div class="topic-body"><p>Surface texture, flexibility, internal structure, geometry and the petiole may work together. The design claim should match the evidence and conditions tested.</p><div class="actions"><a class="btn primary" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/feed/update/urn:li:activity:7516784727807119360">Open original post ↗</a></div><button class="toggle" aria-expanded="false">＋ Read topic summary</button></div>
+      <div class="extra">Design prompt: what counts as self-cleaning in the intended use—less retained dirt, fewer cleaning cycles, lower water use, or a measurable change in surface performance?</div>
+    </article>
+  </div>
+</section>
+
+<section class="pathway">
+  <div class="eyebrow">The big picture</div>
+  <h2>One shared design pathway</h2>
+  <div class="steps"><div class="step"><span>01</span>Real Problem</div><div class="step"><span>02</span>Biological Strategy</div><div class="step"><span>03</span>Design Principle</div><div class="step"><span>04</span>Prototype</div><div class="step"><span>05</span>Performance Testing</div></div>
+  <p class="lead" style="font-size:16px;margin-bottom:0">Nature is not a catalogue of shapes to copy. It is a source of functional strategies to understand, adapt and evaluate. A bioinspired design is not automatically sustainable or ready for commercial use: evidence matters.</p>
+</section>
+
+<section class="reflection">
+  <div><div class="eyebrow">Weekly discussion</div><h2>Which bioinspired design could help your community?</h2><p>Which of these five approaches could most improve a product or building in your community—and what would you test first?</p><p>Consider the real problem, the biological strategy, and one measurable performance test.</p><p><strong>For further reading</strong><br>Wei et al. (2023), <em>Biomimetics</em>, 8, 607.<br>Stagni et al. (2024), <em>Composites Science and Technology</em>, 254, 110669.<br>Wang (2023), <em>Soft Matter</em>, 19, 1058–1075.</p><p><strong>Editorial &amp; Scientific Board</strong><br>Content Preparation &amp; Coordination: Mojtaba Najari<br>Scientific Review &amp; Supervision: Dr. Mehdi Zarabi</p></div>
+  <div class="question"><label for="answer">Draft your thought</label><textarea id="answer" placeholder="I would choose ______ because the biological strategy could help solve ______. First, I would test ______."></textarea><button class="btn primary" id="copyBtn">Copy response for LinkedIn ↗</button><div class="note" id="copyStatus" role="status">Your response stays in this browser page; it is not posted automatically.</div></div>
+</section>
+</main>
+<footer><div><strong>BIOCHAIN</strong><br>Zarabi Bioinnovation Ecosystem</div><div>Content Code: BMS-WR-02-2026<br>12–16 October 2026 · #BIOCHAIN #UTBiomimetic #Biomimicry #BioinspiredDesign #WeeklyReport</div></footer>
+</div>
+<script>
+document.querySelectorAll('.toggle').forEach(button=>{
+  button.addEventListener('click',()=>{
+    const card=button.closest('.topic');
+    const open=card.classList.toggle('open');
+    button.setAttribute('aria-expanded',String(open));
+    button.textContent=open?'− Hide topic summary':'＋ Read topic summary';
+  });
+});
+const answer=document.getElementById('answer');
+const copyBtn=document.getElementById('copyBtn');
+const status=document.getElementById('copyStatus');
+copyBtn.addEventListener('click',async()=>{
+  const text=answer.value.trim();
+  if(!text){status.textContent='Write a short response first, then copy it for LinkedIn.';answer.focus();return;}
+  try{await navigator.clipboard.writeText(text);status.textContent='Copied! Paste your response into the LinkedIn discussion.';}
+  catch(e){answer.select();status.textContent='Your response is selected. Press Ctrl+C to copy it, then paste it into LinkedIn.';}
+});
+</script>
+</body>
+</html>
